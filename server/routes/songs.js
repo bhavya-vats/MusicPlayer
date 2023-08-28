@@ -11,7 +11,7 @@ router.get("/getAll", async (req, res) => {
     const cursor = await song.find({}, null, options);
     
     if (cursor.length > 0) {
-      res.status(200).json({ success: true, data: cursor });
+      res.status(200).json({ success: true, songs: cursor });
     } else {
       res.status(200).json({ success: true, msg: "No Data Found" });
     }

@@ -6,7 +6,7 @@ import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import { IoAdd, IoPause, IoPlay, IoTrash } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import AlertSuccess from "./AlertSuccess";
 // import AlertError from "./AlertError";
 
@@ -15,6 +15,17 @@ const DashboardSongs = () => {
   const [isFocus, setIsFocus] = useState(false);
   const [filteredSongs, setFilteredSongs] = useState(null);
   const [{ allSongs }, dispatch] = useStateValue();
+
+  useEffect(() => {
+    if (!allSongs) {
+      getAllSongs().then((data) => {
+        dispatch({
+          type: actionType.SET_ALL_SONGS,
+          allSongs: data.songs,
+        });
+      });
+    }
+  }, []);
 
   return (
     <div className="w-full p-4 flex items-center justify-center flex-col">
@@ -77,16 +88,7 @@ export default DashboardSongs
 
   
 
-  useEffect(() => {
-    if (!allSongs) {
-      getAllSongs().then((data) => {
-        dispatch({
-          type: actionType.SET_ALL_SONGS,
-          allSongs: data.data,
-        });
-      });
-    }
-  }, []);
+  
 
   useEffect(() => {
     if (songFilter.length > 0) {
