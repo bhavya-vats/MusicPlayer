@@ -97,16 +97,16 @@ router.put("/updateRole/:userId", async (req, res) => {
   }
 });
 
-// router.delete("/delete/:userId", async (req, res) => {
-//   const filter = { _id: req.params.userId };
+router.delete("/delete/:userId", async (req, res) => {
+  const filter = { _id: req.params.userId };
 
-//   const result = await user.deleteOne(filter);
-//   if (result.deletedCount === 1) {
-//     res.status(200).send({ success: true, msg: "Data Deleted" });
-//   } else {
-//     res.status(200).send({ success: false, msg: "Data Not Found" });
-//   }
-// });
+  const result = await user.deleteOne(filter);
+  if (result.deletedCount === 1) {
+    res.status(200).send({ success: true, msg: "Data Deleted" });
+  } else {
+    res.status(200).send({ success: false, msg: "Data Not Found" });
+  }
+});
 
 // router.put("/removeFavourites/:userId", async (req, res) => {
 //   const filter = { _id: req.params.userId };
