@@ -29,7 +29,7 @@ const Dashboard = () => {
            <Route path="/songs" element={<DashboardSongs />} />
            <Route path="/artist" element={<DashboardArtists />} />
           <Route path="/albums" element={<DashboardAlbums />} />
-       <Route path="/newSong" element={<DashboardNewSong />} />
+       <Route path="/newSong" element={<DashBoardHome />} />
         </Routes>
                </div>
               </div>

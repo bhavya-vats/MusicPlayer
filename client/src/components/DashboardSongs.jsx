@@ -12,6 +12,9 @@ import { useState } from 'react';
 
 const DashboardSongs = () => {
   const [songFilter, setSongFilter] = useState("");
+  const [isFocus, setIsFocus] = useState(false);
+  const [filteredSongs, setFilteredSongs] = useState(null);
+  const [{ allSongs }, dispatch] = useStateValue();
 
   return (
     <div className="w-full p-4 flex items-center justify-center flex-col">
@@ -29,9 +32,32 @@ const DashboardSongs = () => {
           } rounded-md bg-transparent outline-none duration-150 transition-all ease-in-out text-base text-textColor font-semibold`}
           value={songFilter}
           onChange={(e) => setSongFilter(e.target.value)}
-          // onBlur={() => setIsFocus(false)}
-          // onFocus={() => setIsFocus(true)}
+          onBlur={() => setIsFocus(false)}
+          onFocus={() => setIsFocus(true)}
         />
+         {songFilter && (
+          <motion.i
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            whileTap={{ scale: 0.75 }}
+            onClick={() => {
+              setSongFilter("");
+              setFilteredSongs(null);
+            }}
+          >
+            <AiOutlineClear className="text-3xl text-textColor cursor-pointer" />
+          </motion.i>
+        )}  
+      </div>
+      <div className="relative w-full  my-4 p-4 py-12 border border-gray-300 rounded-md">
+      <div className="absolute top-4 left-4">
+      <p className="text-xl font-bold">
+            <span className="text-sm font-semibold text-textColor">
+              Count :{" "}
+            </span>
+            {filteredSongs ? filteredSongs?.length : allSongs?.length}
+          </p>
+      </div>
       </div>
     </div>
   )
@@ -46,10 +72,10 @@ export default DashboardSongs
 
 
   
-  const [isFocus, setIsFocus] = useState(false);
-  const [filteredSongs, setFilteredSongs] = useState(null);
+  
+  
 
-  const [{ allSongs }, dispatch] = useStateValue();
+  
 
   useEffect(() => {
     if (!allSongs) {
@@ -84,29 +110,12 @@ export default DashboardSongs
         </NavLink>
         
 
-        {songFilter && (
-          <motion.i
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            whileTap={{ scale: 0.75 }}
-            onClick={() => {
-              setSongFilter("");
-              setFilteredSongs(null);
-            }}
-          >
-            <AiOutlineClear className="text-3xl text-textColor cursor-pointer" />
-          </motion.i>
-        )}
+       
       </div>
 
-      <div className="relative w-full  my-4 p-4 py-12 border border-gray-300 rounded-md">
-        <div className="absolute top-4 left-4">
-          <p className="text-xl font-bold">
-            <span className="text-sm font-semibold text-textColor">
-              Count :{" "}
-            </span>
-            {filteredSongs ? filteredSongs?.length : allSongs?.length}
-          </p>
+      
+        
+          
         </div>
 
         <SongContainer data={filteredSongs ? filteredSongs : allSongs} />
