@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import moment from 'moment';
 import { changingUserRole, getAllUsers } from '../api';
 import {actionType} from "../context/reducer";
+import {MdDelete} from 'react-icons/md'
 
 export const DashboardUserCard = ({ data, index }) => { 
   // console.log(data, index);
@@ -25,9 +26,19 @@ export const DashboardUserCard = ({ data, index }) => {
     })
   }
 
+  const deleteUser = (userId) => {
+    console.log(userId)
+  }
+
   return (
     <motion.div key={index} className='relative w-full rounded-md flex items-center justify-between  py-4 bg-lightOverlay cursor-pointer hover:bg-card hover:shadow-md'>
+      {data._id !== user?.user._id && (
+      <motion.div whileTap={{scale:0.75}} className='absolute left-4 w-8 h-8 rounded-md flex items-center justify-center bg-gray-200' onClick={() => deleteUser(data._id)}>
+        <MdDelete className='text-xl text-red-400 hover:text-red-500'/>
+      </motion.div>
+      )}
       <div className='w-275 min-w-[160px] flex items-center justify-center'>
+
         <img src={data.imageURL} referrerPolicy='no-referrer' alt='' className='w-10 h-10 object-cover rounded-md min-w-[40px] shadow-md'/>
       </div>
       <p className='text-base text-textColor w-275 min-w-[160px] text-center'>{data.name}</p>
