@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion';
+import { IoTrash } from 'react-icons/io5';
 
 const Songcard = ({data, index}) => {
   return (
@@ -8,8 +9,13 @@ const Songcard = ({data, index}) => {
         <motion.img whileHover={{scale : 1.05}} src={data.imageURL} className='w-full h-full rounded-lg object-cover'/>
       </div>
       <p className='text-base text-headingColor font-semibold my-2'>{data.name.length > 25 ? `$data.name.slice(0, 25)}..` : data.name}
-      <span className='block text-sm text-gray-400 my-1'>{data.artist}</span>
+      <span className='block text-sm text-gray-400 my-1'>{data.artist.length > 25 ? `$data.artist.slice(0, 25)}..` : data.artist}</span>
       </p>
+      <div className='w-full absolute bottom-2 right-2 flex items-center justify-between px-4'>
+        <motion.i whileTap={{scale: 0.75}} className='text-base text-red-400 drop-shadow-md hover:text-red-600'>
+          <IoTrash/>
+        </motion.i>
+      </div>
     </motion.div>
   )
 }
