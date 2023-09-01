@@ -7,6 +7,7 @@ import { actionType } from "../context/reducer";
 import { IoAdd, IoPause, IoPlay, IoTrash } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import { SongCard } from '.';
 // import {default as Songcard} from './Songcard';
 // import AlertSuccess from "./AlertSuccess";
 // import AlertError from "./AlertError";

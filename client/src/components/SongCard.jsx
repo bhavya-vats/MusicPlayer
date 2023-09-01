@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Songcard = () => {
+const Songcard = ({data, index}) => {
   return (
-    <div>Songcard</div>
+    <motion.div>Songcard</motion.div>
   )
 }
 
