@@ -7,6 +7,7 @@ import { actionType } from "../context/reducer";
 import { IoAdd, IoPause, IoPlay, IoTrash } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from 'react';
+// import {default as Songcard} from './Songcard';
 // import AlertSuccess from "./AlertSuccess";
 // import AlertError from "./AlertError";
 
@@ -70,10 +71,24 @@ const DashboardSongs = () => {
             {/* {filteredSongs ? filteredSongs?.length : allSongs?.length} */}
           </p>
       </div>
+      <SongContainer data={
+        // filteredSongs ? filteredSongs : 
+        allSongs} />
       </div>
     </div>
   )
 }
+
+export const SongContainer = ({ data }) => {
+  return (
+    <div className=" w-full  flex flex-wrap gap-3  items-center justify-evenly">
+      {data &&
+        data.map((song, i) => (
+          <SongCard key={song._id} data={song} index={i} />
+        ))}
+    </div>
+  );
+};
 
 export default DashboardSongs
 
@@ -121,22 +136,13 @@ export default DashboardSongs
           
         </div>
 
-        <SongContainer data={filteredSongs ? filteredSongs : allSongs} />
+        
       </div>
     </div>
   );
 };
 
-export const SongContainer = ({ data }) => {
-  return (
-    <div className=" w-full  flex flex-wrap gap-3  items-center justify-evenly">
-      {data &&
-        data.map((song, i) => (
-          <SongCard key={song._id} data={song} index={i} />
-        ))}
-    </div>
-  );
-};
+
 
 export const SongCard = ({ data, index }) => {
   const [isDeleted, setIsDeleted] = useState(false);
