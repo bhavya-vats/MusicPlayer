@@ -66,7 +66,8 @@ const DashboardSongs = () => {
             <span className="text-sm font-semibold text-textColor">
               Count :{" "}
             </span>
-            {filteredSongs ? filteredSongs?.length : allSongs?.length}
+            {allSongs?.length}
+            {/* {filteredSongs ? filteredSongs?.length : allSongs?.length} */}
           </p>
       </div>
       </div>
