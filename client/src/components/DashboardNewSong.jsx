@@ -29,10 +29,15 @@ import {
   // import AlertError from "./AlertError";
 
 const DashboardNewSong = () => {
+  const [songName, setSongName] = useState("");
+
   return (
     <div className="flex flex-col items-center justify-center p-4 border border-gray-300 rounded-md">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
-        
+        <div className="flex flex-col items-center justify-center gap-4">
+          <input type="text" placeholder="Type your song name" className="w-full p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-gray-300 bg-transparent" value={songName}
+            onChange={(e) => setSongName(e.target.value)}/>
+          </div>
       </div>
       </div>
   )
@@ -162,7 +167,7 @@ export default DashboardNewSong
 
 //   const [isAudioLoading, setIsAudioLoading] = useState(false);
 
-//   const [songName, setSongName] = useState("");
+//   
 //   const [audioAsset, setAudioAsset] = useState(null);
 //   const [duration, setDuration] = useState(null);
 //   const audioRef = useRef();
@@ -267,13 +272,9 @@ export default DashboardNewSong
 //   return (
 //     
 //       
-//         <div className="flex flex-col items-center justify-center gap-4">
-//           <input
-//             type="text"
-//             placeholder="Type your song name"
-//             className="w-full p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-gray-300 bg-transparent"
-//             value={songName}
-//             onChange={(e) => setSongName(e.target.value)}
+//         
+//             
+//             
 //           />
 
 //           <div className="flex w-full justify-between flex-wrap items-center gap-4">
