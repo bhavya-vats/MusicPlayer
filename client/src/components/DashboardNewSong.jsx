@@ -23,7 +23,7 @@ import {
     saveNewSong,
   } from "../api";
   import { actionType } from "../context/reducer";
-  // import { filterByLanguage, filters } from "../utils/supportfunctions";
+  import { filterByLanguage, filters } from "../utils/supportfunctions";
   // import { IoMusicalNote } from "react-icons/io5";
   // import AlertSuccess from "./AlertSuccess";
   // import AlertError from "./AlertError";
@@ -38,6 +38,12 @@ const DashboardNewSong = () => {
           <input type="text" placeholder="Type your song name" className="w-full p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-gray-300 bg-transparent" value={songName}
             onChange={(e) => setSongName(e.target.value)}/>
           </div>
+          <div className="flex w-full justify-between flex-wrap items-center gap-4">
+//             <FilterButtons filterData={artists} flag={"Artist"} />
+//             <FilterButtons filterData={allAlbums} flag={"Albums"} />
+//             <FilterButtons filterData={filterByLanguage} flag={"Language"} />
+//             <FilterButtons filterData={filters} flag={"Category"} />
+//           </div>
       </div>
       </div>
   )
@@ -277,12 +283,7 @@ export default DashboardNewSong
 //             
 //           />
 
-//           <div className="flex w-full justify-between flex-wrap items-center gap-4">
-//             <FilterButtons filterData={artists} flag={"Artist"} />
-//             <FilterButtons filterData={allAlbums} flag={"Albums"} />
-//             <FilterButtons filterData={filterByLanguage} flag={"Language"} />
-//             <FilterButtons filterData={filters} flag={"Category"} />
-//           </div>
+//           
 
 //           <div className="flex items-center justify-between gap-2 w-full flex-wrap">
 //             <div className="bg-card  backdrop-blur-md w-full lg:w-300 h-300 rounded-md border-2 border-dotted border-gray-300 cursor-pointer">
