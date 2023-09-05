@@ -45,13 +45,13 @@ const DashboardNewSong = () => {
       useEffect(() => {
             if (!artists) {
               getAllArtist().then((data) => {
-                dispatch({ type: actionType.SET_ARTISTS, artists: data.data });
+                dispatch({ type: actionType.SET_ALL_ARTISTS, artists: data.data });
               });
             }
         
             if (!allAlbums) {
               getAllAlbums().then((data) => {
-                dispatch({ type: actionType.SET_ALL_ALBUMNS, allAlbums: data.data });
+                dispatch({ type: actionType.SET_ALL_ALBUMS, allAlbums: data.data });
               });
             }
           }, []); 
