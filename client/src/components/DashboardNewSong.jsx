@@ -13,7 +13,7 @@ import {
   
   import { storage } from "../config/firebase.config";
   import { useStateValue } from "../context/StateProvider";
-  // import FilterButtons from "./FilterButtons";
+  import FilterButtons from "./FilterButtons";
   import {
     getAllAlbums,
     getAllArtist,
@@ -30,6 +30,31 @@ import {
 
 const DashboardNewSong = () => {
   const [songName, setSongName] = useState("");
+  const [
+        {
+          artists,
+          allAlbums,
+          albumFilter,
+          artistFilter,
+          filterTerm,
+          languageFilter,
+        },
+        dispatch,
+      ] = useStateValue();
+
+      useEffect(() => {
+            if (!artists) {
+              getAllArtist().then((data) => {
+                dispatch({ type: actionType.SET_ARTISTS, artists: data.data });
+              });
+            }
+        
+            if (!allAlbums) {
+              getAllAlbums().then((data) => {
+                dispatch({ type: actionType.SET_ALL_ALBUMNS, allAlbums: data.data });
+              });
+            }
+          }, []); 
 
   return (
     <div className="flex flex-col items-center justify-center p-4 border border-gray-300 rounded-md">
@@ -39,11 +64,11 @@ const DashboardNewSong = () => {
             onChange={(e) => setSongName(e.target.value)}/>
           </div>
           <div className="flex w-full justify-between flex-wrap items-center gap-4">
-//             <FilterButtons filterData={artists} flag={"Artist"} />
-//             <FilterButtons filterData={allAlbums} flag={"Albums"} />
-//             <FilterButtons filterData={filterByLanguage} flag={"Language"} />
-//             <FilterButtons filterData={filters} flag={"Category"} />
-//           </div>
+             <FilterButtons filterData={artists} flag={"Artist"} />
+             <FilterButtons filterData={allAlbums} flag={"Albums"} />
+             <FilterButtons filterData={filterByLanguage} flag={"Language"} />
+             <FilterButtons filterData={filters} flag={"Category"} />
+           </div>
       </div>
       </div>
   )
@@ -178,31 +203,9 @@ export default DashboardNewSong
 //   const [duration, setDuration] = useState(null);
 //   const audioRef = useRef();
 
-//   const [
-//     {
-//       artists,
-//       allAlbums,
-//       albumFilter,
-//       artistFilter,
-//       filterTerm,
-//       languageFilter,
-//     },
-//     dispatch,
-//   ] = useStateValue();
+//   
 
-//   useEffect(() => {
-//     if (!artists) {
-//       getAllArtist().then((data) => {
-//         dispatch({ type: actionType.SET_ARTISTS, artists: data.data });
-//       });
-//     }
-
-//     if (!allAlbums) {
-//       getAllAlbums().then((data) => {
-//         dispatch({ type: actionType.SET_ALL_ALBUMNS, allAlbums: data.data });
-//       });
-//     }
-//   }, []);
+//   
 
 //   const calculateTime = (sec) => {
 //     const minutes = Math.floor(sec / 60);
