@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FaUsers } from "react-icons/fa";
-import { getAllAlbums, getAllArtist, getAllSongs, getAllUsers } from "../api";
+import { getAllAlbums, getAllArtists, getAllSongs, getAllUsers } from "../api";
 import { actionType } from "../context/reducer";
 import { useStateValue } from "../context/StateProvider";
 import { bgColors } from "../utils/styles";
@@ -49,7 +49,7 @@ const DashBoardHome = () => {
     }
 
     if (!allArtists) {
-      getAllArtist().then((data) => {
+      getAllArtists().then((data) => {
         dispatch({ type: actionType.SET_ARTISTS, artists: data.artist });
       });
     }

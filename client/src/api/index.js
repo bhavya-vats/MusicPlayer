@@ -15,7 +15,7 @@ export const validateUser = async (token) => {
   }
 };
 
-export const getAllArtist = async () => {
+export const getAllArtists = async () => {
   try {
     const res = await axios.get(`${baseURL}api/artists/getAll`);
     return res.data;

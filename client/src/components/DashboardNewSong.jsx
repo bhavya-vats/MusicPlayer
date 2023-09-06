@@ -16,7 +16,7 @@ import {
   import FilterButtons from "./FilterButtons";
   import {
     getAllAlbums,
-    getAllArtist,
+    getAllArtists,
     getAllSongs,
     saveNewAlbum,
     saveNewArtist,
@@ -34,26 +34,28 @@ const DashboardNewSong = () => {
         {
           artists,
           allAlbums,
-          albumFilter,
-          artistFilter,
-          filterTerm,
-          languageFilter,
+          // albumFilter,
+          // artistFilter,
+          // filterTerm,
+          // languageFilter,
         },
         dispatch,
       ] = useStateValue();
 
       useEffect(() => {
-            if (!artists) {
-              getAllArtist().then((data) => {
-                dispatch({ type: actionType.SET_ALL_ARTISTS, artists: data.data });
+            // if (!artists) {
+              getAllArtists().then((data) => {
+                console.log(data);
+                // dispatch({ type: actionType.SET_ALL_ARTISTS, artists: data.data });
               });
-            }
+            // }
         
-            if (!allAlbums) {
+            // if (!allAlbums) {
               getAllAlbums().then((data) => {
-                dispatch({ type: actionType.SET_ALL_ALBUMS, allAlbums: data.data });
+                console.log(data);
+          //       dispatch({ type: actionType.SET_ALL_ALBUMS, allAlbums: data.data });
               });
-            }
+            // }
           }, []); 
 
   return (
